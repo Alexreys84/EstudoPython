@@ -1,0 +1,245 @@
+import sys
+from PyQt5.QtWidgets import QWidget, QApplication, QLabel, QTableWidget, QTableWidgetItem, QHBoxLayout, QVBoxLayout,QComboBox, QCheckBox
+
+class Janela(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.setGeometry(5, 25, 1580, 850)
+        self.setWindowTitle("Cadastro de Cliente")
+
+        # Criando o layout principal com distribuição vertical
+        
+        layout_principal = QVBoxLayout()
+
+        # Criação de quatro labels que representarão as quatro áreas da nossa janela
+       
+        label_superior = QLabel()
+        label_meio = QLabel()
+        label_tabela = QLabel()
+        label_rodape = QLabel()
+
+        # Aplicação de estilo de cor e ajuste de altura de cada label
+        
+        label_superior.setStyleSheet("background-color:white")
+        label_superior.setFixedHeight(300)
+
+        label_meio.setStyleSheet("background-color:red")
+        label_meio.setFixedHeight(60)
+
+        label_tabela.setStyleSheet("background-color:black")
+        label_tabela.setFixedHeight(400)
+
+        label_rodape.setStyleSheet("background-color:white")
+        label_rodape.setFixedHeight(100)
+
+        # Adicionando as labels ao layout principal
+        
+        layout_principal.addWidget(label_superior)
+        layout_principal.addWidget(label_meio)
+        layout_principal.addWidget(label_tabela)
+        layout_principal.addWidget(label_rodape)
+
+        # Criando um layout horizontal para as labels superiores
+       
+        layout_hor_lb_superior = QHBoxLayout()
+        
+        label_col_esquerda = QLabel()
+        label_col_meio = QLabel()
+        label_col_direita = QLabel()
+
+        label_col_esquerda.setStyleSheet("background-color:#999999")
+        label_col_meio.setStyleSheet("background-color:#999999")
+        label_col_direita.setStyleSheet("background-color:#999999")
+
+        layout_hor_lb_superior.addWidget(label_col_esquerda)
+        layout_hor_lb_superior.addWidget(label_col_meio)
+        layout_hor_lb_superior.addWidget(label_col_direita)
+        
+        # Definindo o layout horizontal para a label superior
+        
+        label_superior.setLayout(layout_hor_lb_superior)  
+        self.setLayout(layout_principal)  
+       
+        #Trabalahndo com o gerenciamento das colunas 
+
+        layout_ver_col_esquerda = QVBoxLayout()
+
+        label_nome = QLabel("Nome do Cliente")
+        edit_nome = QComboBox()
+        edit_nome.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_nome.setFixedWidth(450)
+        layout_ver_col_esquerda.addWidget(label_nome)
+        layout_ver_col_esquerda.addWidget(edit_nome)
+    
+        label_Telefone = QLabel ("Telefone")
+        edit_Telefone= QComboBox()
+        edit_Telefone.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_Telefone.setFixedWidth(450)
+        layout_ver_col_esquerda.addWidget(label_Telefone)
+        layout_ver_col_esquerda.addWidget(edit_Telefone)
+
+        
+        label_data = QLabel ("Data")
+        edit_data = QComboBox()
+        edit_data.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_data.setFixedWidth(450)
+        layout_ver_col_esquerda.addWidget(label_data)
+        layout_ver_col_esquerda.addWidget(edit_data)
+
+        label_hora = QLabel ("Hora")
+        edit_hora = QComboBox()
+        edit_hora.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_hora.setFixedWidth(450)
+        layout_ver_col_esquerda.addWidget(label_hora)
+        layout_ver_col_esquerda.addWidget(edit_hora)
+  
+        label_local = QLabel ("Local")
+        edit_local = QComboBox()
+        edit_local.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_local.setFixedWidth(450)
+        layout_ver_col_esquerda.addWidget(label_local)
+        layout_ver_col_esquerda.addWidget(edit_local)
+    
+        label_col_esquerda.setLayout(layout_ver_col_esquerda)
+
+        # Criando gerenciamneto do meio
+       
+        layout_ver_col_meio = QVBoxLayout()
+              
+        label_placa = QLabel ("Placa")
+        edit_placa = QComboBox()
+        edit_placa.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_placa.setFixedWidth(450)
+        layout_ver_col_meio.addWidget(label_placa)
+        layout_ver_col_meio.addWidget(edit_placa)
+ 
+        label_col_meio.setLayout(layout_ver_col_meio)
+        label_marca= QLabel ("Marca")
+        edit_marca = QComboBox()
+        edit_marca.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_marca.setFixedWidth(450)
+        layout_ver_col_meio.addWidget(label_marca)
+        layout_ver_col_meio.addWidget(edit_marca)
+    
+
+        label_col_meio.setLayout(layout_ver_col_meio)
+    
+        label_veiculo= QLabel ("Veiculo")
+        edit_veiculo = QComboBox()
+        edit_veiculo.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_veiculo.setFixedWidth(450)
+        layout_ver_col_meio.addWidget(label_veiculo)
+        layout_ver_col_meio.addWidget(edit_veiculo)
+    
+        label_col_meio.setLayout(layout_ver_col_meio)
+
+        label_endereco= QLabel ("Endereço")
+        edit_endereco = QComboBox()
+        edit_endereco.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_endereco.setFixedWidth(450)
+        layout_ver_col_meio.addWidget(label_endereco)
+        layout_ver_col_meio.addWidget(edit_endereco)
+
+        label_numero= QLabel ("Número")
+        edit_numero = QComboBox()
+        edit_numero.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_numero.setFixedWidth(450)
+        layout_ver_col_meio.addWidget(label_numero)
+        layout_ver_col_meio.addWidget(edit_numero)
+
+                # Criando a coluna da Direita
+        
+        layout_ver_col_direita = QVBoxLayout()
+               
+        label_email = QLabel ("E-mail")
+        edit_email = QComboBox()
+        edit_email.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_email.setFixedWidth(450)
+        layout_ver_col_direita.addWidget(label_email)
+        layout_ver_col_direita.addWidget(edit_email)
+      
+        label_col_direita.setLayout(layout_ver_col_direita)
+            
+        label_pagamento= QLabel ("Forma de Pagamento")
+        edit_pagamento = QComboBox()
+        edit_pagamento.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_pagamento.setFixedWidth(450)
+        layout_ver_col_direita.addWidget(label_pagamento)
+        layout_ver_col_direita.addWidget(edit_pagamento)
+      
+        label_col_direita.setLayout(layout_ver_col_direita)
+
+        label_rg= QLabel ("RG / CNH")
+        edit_rg = QComboBox()
+        edit_rg.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_rg.setFixedWidth(450)
+        layout_ver_col_direita.addWidget(label_rg)
+        layout_ver_col_direita.addWidget(edit_rg)
+      
+        label_col_direita.setLayout(layout_ver_col_direita)
+              
+                # criando layout horizontal
+        layout_hor_lb_meio = QHBoxLayout()
+       
+        label_col_esquerda = QLabel()
+        label_col_meio = QLabel()
+        label_col_direita = QLabel()
+ 
+        label_col_esquerda.setStyleSheet("background-color:white")
+        label_col_meio.setStyleSheet("background-color:white")
+        label_col_direita.setStyleSheet("background-color:white")
+ 
+        layout_hor_lb_meio.addWidget(label_col_esquerda)
+        layout_hor_lb_meio.addWidget(label_col_meio)
+        layout_hor_lb_meio.addWidget(label_col_direita)
+        label_meio.setLayout(layout_hor_lb_meio)  
+        self.setLayout(layout_principal)  
+
+        
+        # criando label
+        layout_hor_col_esquerda = QHBoxLayout()
+ 
+        label_servico = QLabel("Serviços:")
+        edit_servico= QComboBox()
+        edit_servico.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_servico.setFixedWidth(200)
+        layout_hor_col_esquerda.addWidget(label_servico)
+        layout_hor_col_esquerda.addWidget(edit_servico)
+       
+        label_col_esquerda.setLayout(layout_hor_col_esquerda)
+
+        label_total = QLabel("Total:")
+        edit_total= QComboBox()
+        edit_total.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_total.setFixedWidth(200)
+        layout_hor_col_esquerda.addWidget(label_total)
+        layout_hor_col_esquerda.addWidget(edit_total)
+       
+        label_col_esquerda.setLayout(layout_hor_col_esquerda)
+
+        layout_hor_col_meio = QHBoxLayout()
+ 
+        label_frequente = QLabel()
+        edit_frequente= QCheckBox("Frequente")
+        edit_frequente.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_frequente.setFixedWidth(250)
+        layout_hor_col_meio.addWidget(label_frequente)
+        layout_hor_col_meio.addWidget(edit_frequente)
+       
+        label_col_meio.setLayout(layout_hor_col_meio)
+
+        label_nao = QLabel()
+        edit_nao= QCheckBox("Não Frequente")
+        edit_nao.setStyleSheet("QComboBox{padding:10px; font-size:20pt}")
+        edit_nao.setFixedWidth(250)
+        layout_hor_col_meio.addWidget(label_nao)
+        layout_hor_col_meio.addWidget(edit_nao)
+       
+        label_col_meio.setLayout(layout_hor_col_meio)
+    
+    
+app = QApplication(sys.argv)
+tela = Janela()
+tela.show()
+app.exec_()
